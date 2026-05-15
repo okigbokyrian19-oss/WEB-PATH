@@ -6,15 +6,17 @@
     <title>Document</title>
 <style>
     body {
+        scroll-behavior: smooth;
         padding: 100px;
-        background-color: #17536b;
+        background-color: #3eb68e;
         font-family: Arial, sans-serif;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         min-height: 100vh;
-        margin: 0;      
+        margin: 0; 
+        color: white;   
     }
     h1 {
         color: #1a73e8;
@@ -26,7 +28,7 @@
         padding: 12px 30px;
         border-radius: 50px;
         box-shadow: 0 4px 15pxrgba(0,0,0,0.1);
-    }
+    } 
     nav a {
         color: #333;
         text-decoration: none;
@@ -124,20 +126,28 @@ h1 {
     background-color: rgba(0,0,0,0.7);
 }
 .modal-content {
+    position: relative;
     background-color: white;
     margin: 15% auto;
-    padding: 20px;
+    padding: 40px 20px;
     border-radius: 10px;
     width: 80%;
     max-width: 500px;
     text-align: center;
     color: #333;
     }
-    .close-button {
+    .close-btn {
         float: right;
-        font-size: 28px;
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        font-size: 30px;
         font-weight: bold;
+        color: #888;
         cursor: pointer;
+    }
+    .close-btn:hover {
+        color: #ff0000;
     }
 </style>
 </head>
@@ -146,6 +156,7 @@ h1 {
             <a href="#">Home</a>
             <a href="#">About</a>
             <a href="#">projects</a>
+            <a href="#contact">Contact</a>
         </nav>
    <div class="profile-area">
         <img src="me.jpg.JPG" alt="kyrin okigbo" class="profile-img">
@@ -169,9 +180,21 @@ h1 {
         <button class="btn" onclick="openModal('Development', 'This represent my journey into full-stack logic and shipping live projects by KYRIAN MEDIA')">View Details</button>
     </div>
    </div>
-<div id="projectmodal" class="modal">
-    <div class="modal-content">
-    <span class="close-btn">&times ;</span>
+   <section id="contact" style="padding: 100px 20px; margin-top: 50px; text-align: center; display: inline-block; width: 100%; background-color: #f4f4f4; color: #333; clear: both;">
+    <h2>Get in Touch</h2>
+    <p>I'm currently open to new projects and web development opportunities.</p>
+
+    <div style="margin-top: 30px;">
+        <a href="mailto:kyrianmedia@gmail.com" class="btn">Email Me</a>
+        <a href="https://www.linkedin.com/in/kyrian-okigbo-9b8b1a1b3/" target="_blank" class="btn">LinkedIn</a>
+        <div style="margin-top: 20px;">
+            <a href="#" style="color: #17536b; text-decoration: none; font-size: 14px;"> Back to Top</a>
+        </div>
+    </div>
+   </section>
+   <div id="projectmodal" class="modal">
+        <div class="modal-content">
+    <span class="close-btn">&times;</span>
 <h2 id="modalTitle">Project Title</h2>
 <p id="modalDescription">Kyrian Media Franchise</p>
    </div>
@@ -181,21 +204,21 @@ h1 {
     const closebtn = document.querySelector(".close-btn");
 
     // function to open model
-    function openModal(title, decription) {
-        document.getElementById( "modalTitle" ) .innerText = title;
-        document.getElementById( "modalDescription" ) .innerText = decription;
+    function openModal(title, description) {
+        document.getElementById("modalTitle").innerText = title;
+        document.getElementById("modalDescription").innerText = description;
         modal.style.display = "block";
-    }
-    // close the model when click (x)
-    closeBtn.onclick = function( ) {
-        modal.style.display = "none"
     } 
-    // close if they click outside the box
+    // 1. close the model when click (x)
+    closebtn.onclick = function() {
+        modal.style.display = "none";
+    };
+    // 2.close if they click outside the box
     window.onclick = function(event) {
         if (event.target == modal) {
-            modal.style.display = "none" 
+            modal.style.display = "none";
         }
-    }
+    };
 </script>
 </body>
 </html>
